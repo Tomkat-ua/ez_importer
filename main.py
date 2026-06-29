@@ -29,6 +29,8 @@ EZ_HEADERS = {
 }
 
 def get_transactions():
+    logging.info(f"Connect to database {os.getenv('HOST')}:{os.getenv('DATABASE')} ..."
+                )
     conn   = mysql.connector.connect(**DB_CONFIG)
     cursor = conn.cursor(dictionary=True)
 
@@ -39,6 +41,7 @@ def get_transactions():
     try:
         cursor.execute(query)
         raw_data =  cursor.fetchall()
+        logging.info("Get data OK")
         return raw_data
     except mysql.connector.Error as err:
         logging.error(f"Помилка читання бази даних: {err}")
