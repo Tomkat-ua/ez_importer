@@ -41,7 +41,11 @@ def get_transactions():
     try:
         cursor.execute(query)
         raw_data =  cursor.fetchall()
-        logging.info("Get data OK")
+        if not raw_data:
+            logging.info(f"Відсутні нові транзакції")
+            exit(0)
+        else:
+            logging.info("Get data OK")
         return raw_data
     except mysql.connector.Error as err:
         logging.error(f"Помилка читання бази даних: {err}")
@@ -103,6 +107,7 @@ def post_test():
             logging.error(f"Помилка мережі при запиті до ez-API: {e}")
 
 if __name__ == "__main__":
+    logging.info(f"========= Run service =============")
     post_transactions()
     # get_transactions()
     # post_test()
