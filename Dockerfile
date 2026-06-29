@@ -11,7 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # 5. Копіюємо решту файлів проєкту (скрипти, конфіги тощо)
 COPY *.py .
-COPY .env .
 
 # 6. Вказуємо команду, яка виконається ПРИ ЗАПУСКУ контейнера
 CMD ["python", "main.py"]
