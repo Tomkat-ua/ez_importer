@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Конфігурація підключень
 DB_CONFIG = {
     'host': os.getenv('HOST','localhost') ,
-    'user': os.getenv('USER','user'),
+    'user': os.getenv('DBUSER','user'),
     'password': os.getenv('PASSWORD'),
     'database': os.getenv('DATABASE'),
     'port': int(os.getenv('PORT')),
