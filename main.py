@@ -4,7 +4,6 @@ import mysql.connector
 from dotenv import load_dotenv
 
 load_dotenv()
-
 # Налаштування логування
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -95,20 +94,6 @@ def post_transactions():
             except requests.RequestException as e:
                 logging.error(f"Помилка мережі при запиті до ez-API: {e}")
 
-def post_test():
-    data = get_transactions()
-    for payload in data:
-        try:
-            raw_json_string = payload['export_json']
-            id = payload['id']
-            print(id,raw_json_string)
-            update_transactions(id,1)
-        except requests.RequestException as e:
-            logging.error(f"Помилка мережі при запиті до ez-API: {e}")
-
 if __name__ == "__main__":
     logging.info(f"========= Run service =============")
     post_transactions()
-    # get_transactions()
-    # post_test()
-
